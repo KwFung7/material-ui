@@ -74,6 +74,9 @@ const TextareaAutosize = React.forwardRef(function TextareaAutosize(
 
   const getUpdatedState = React.useCallback(() => {
     const input = inputRef.current!;
+    if (!input) {
+      return;
+    }
 
     const containerWindow = ownerWindow(input);
     const computedStyle = containerWindow.getComputedStyle(input);
@@ -201,6 +204,9 @@ const TextareaAutosize = React.forwardRef(function TextareaAutosize(
     };
     const debounceHandleResize = debounce(handleResize);
     const input = inputRef.current!;
+    if (!input) {
+      return;
+    }
     const containerWindow = ownerWindow(input);
 
     containerWindow.addEventListener('resize', debounceHandleResize);
